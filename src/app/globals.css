@@ -50,7 +50,7 @@ body {
     --slide-spacing: 1rem;
     --slide-size: 100%;
     --slide-height: calc(100vh - 75px);
-    --detail-medium-contrast: rgb(50, 49, 49);
+    --detail-medium-contrast: rgb(246, 238, 238);
     --text-high-contrast-rgb-value: 255, 255, 255;
     --text-body: rgb(212, 188, 98)
   }

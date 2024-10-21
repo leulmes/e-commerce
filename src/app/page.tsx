@@ -21,6 +21,7 @@ export default function Home() {
 		<div className="flex flex-col text-white">
 			<Navbar />
 			<div className="flex flex-col items-center text-black ">
+				<h1 className="">Hiwot Studio</h1>
 				<EmblaCarousel slides={SLIDES} options={OPTIONS} />	
 			</div>
 			<Footer />
