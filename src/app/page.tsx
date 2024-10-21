@@ -18,11 +18,14 @@ const SLIDES = Array.from(Array(SLIDE_COUNT).keys())
 
 export default function Home() {
 	return (
-		<div className="flex flex-col text-white">
+		<div className="">
 			<Navbar />
-			<div className="flex flex-col items-center text-black ">
-				<h1 className="">Hiwot Studio</h1>
-				<EmblaCarousel slides={SLIDES} options={OPTIONS} />	
+			<div className="flex items-center justify-center">
+				<h1 className="absolute z-20 text-white text-5xl">Hiwot Studio</h1>
+				<div className="brightness-75">
+					<EmblaCarousel slides={SLIDES} options={OPTIONS} />	
+				</div>
+				
 			</div>
 			<Footer />
 		</div>

@@ -14,8 +14,8 @@ type CarouselImage = {
   src: string
 }
 const images: CarouselImage[] = [
-  {src: '/curlyModel1.jpg'},
   {src: '/wavyModel.jpg'},
+  {src: '/curlyModel1.jpg'},
   {src: '/model1.jpg'},
   {src: '/model3.jpg'},
   {src: '/model4.jpg'}

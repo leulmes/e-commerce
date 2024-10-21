@@ -3,8 +3,8 @@ import Image from 'next/image';
 
 const Navbar = () => {
   return (
-    <div className='flex flex-row bg-black'>
-        <div className=''>
+    <div className='flex flex-row bg-black text-white'>
+        <div className='cursor-pointer'>
           <Image src='/hs-image.png' width='100' height='100' alt='logo'/>
         </div>
         
