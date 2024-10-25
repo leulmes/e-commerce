@@ -1,0 +1,13 @@
+{
+	"_id": "1",
+	"itemName": "Hair Color",
+	"skus": [
+		{
+			"sku": 1,
+			"price": 14.99,
+			"quantity": 5,
+			"feature": "Purple",
+			"image": "https://picsum.photos/200/300"
+		}
+	]
+}

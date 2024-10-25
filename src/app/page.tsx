@@ -1,16 +1,9 @@
 import Image from "next/image";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-// import {
-// 	Carousel,
-// 	CarouselContent,
-// 	CarouselItem,
-// 	CarouselNext,
-// 	CarouselPrevious,
-// } from "@/components/ui/carousel";
-// import { Card, CardContent } from "@/components/ui/card";
 import EmblaCarousel from "./components/EmblaCarousel";
-import { EmblaOptionsType } from 'embla-carousel'
+import { EmblaOptionsType } from 'embla-carousel';
+
 
 const OPTIONS: EmblaOptionsType = { loop: true }
 const SLIDE_COUNT = 5

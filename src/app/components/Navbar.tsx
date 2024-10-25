@@ -1,5 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
+require('dotenv').config()
 
 const Navbar = () => {
   return (
@@ -12,7 +14,9 @@ const Navbar = () => {
           <h1>Services</h1>
           <h1>Gallery</h1>
           <h1>About</h1>
-          <h1>Shop</h1>
+          <Link href={`${process.env.SITE_URL}/shop`}>
+            <h1>Shop</h1>
+          </Link>
           <h1>Book Now</h1>
         </div>
         

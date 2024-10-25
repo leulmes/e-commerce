@@ -1,0 +1,12 @@
+{
+    "_id":{"$oid":"671a4658887e2a8bbb280d39"},
+    "email": "johndoe@gmail.com",
+    "type": "credit",
+    "card": {
+        "type": "visa",
+        "number": "4242424242424242",
+        "exprMonth": 12,
+        "exprYear": 2025,
+        "cvv": 123
+    }
+}

@@ -1,0 +1,22 @@
+{
+    "_id": "user_2jnjEsiC1AKL6To6ceo2v6MyOEZ",
+    "email": "johndoe@gmail.com",
+    "paymentStatus": "processed",
+    "status": "shipped",
+    "amount": 14.99,
+    "items": [
+        {
+            "sku": 1,
+            "quantity": 1,
+            "price": 14.99
+        }
+    ],
+    "shippingAddress": {
+        "country": "USA",
+        "street1": "123 Sesame Street",
+        "street2": "Apt 42", 
+        "city": "Baltimore",
+        "state": "Maryland",
+        "zip": 1234
+    }
+}
