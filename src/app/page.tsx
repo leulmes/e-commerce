@@ -18,7 +18,6 @@ export default function Home() {
 				<div className="brightness-75">
 					<EmblaCarousel slides={SLIDES} options={OPTIONS} />	
 				</div>
-				
 			</div>
 			<Footer />
 		</div>
