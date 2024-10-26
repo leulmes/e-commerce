@@ -4,11 +4,12 @@ import Link from "next/link";
 import { ShoppingCart } from "lucide-react";
 require("dotenv").config();
 
+
 const Navbar = () => {
 	return (
 		<div className="flex flex-row bg-black text-white sticky top-0 z-50">
 			<div className="cursor-pointer">
-				<Link href={`${process.env.SITE_URL}/`}>
+				<Link href={'/'}>
 					<Image src="/hs-image.png" width="100" height="100" alt="logo" />
 				</Link>
 			</div>
@@ -17,7 +18,7 @@ const Navbar = () => {
 					<h1>Services</h1>
 					<h1>Gallery</h1>
 					<h1>About</h1>
-					<Link href={`${process.env.SITE_URL}/shop`}>
+					<Link href={'/shop'}>
 						<h1>Shop</h1>
 					</Link>
 					<h1>Book Now</h1>
