@@ -10,6 +10,8 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
+import { useContext } from "react";
+import ItemCountContext from "@/itemCountContext";
 
 type Product = {
 	name: string;
@@ -54,9 +56,10 @@ const ShopPage = () => {
 		product3,
 		product4,
 	];
-    const [itemCount, setItemCount] = useState(0);
+    const { itemCount, setItemCount } = useContext(ItemCountContext);
 
     const incrementItemCount = (product: Product) => {
+        console.log("adding to cart: ", product.name);
         if (!product.placedInCart) {
             // item not in cart yet, add it
             setItemCount(itemCount + 1);
