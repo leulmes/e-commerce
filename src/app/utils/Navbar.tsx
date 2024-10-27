@@ -6,30 +6,16 @@ import { ShoppingCart } from "lucide-react";
 import { useContext } from "react";
 import ItemCountContext from "@/itemCountContext";
 
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import {
-	Sheet,
-	SheetClose,
-	SheetContent,
-	SheetDescription,
-	SheetFooter,
-	SheetHeader,
-	SheetTitle,
-	SheetTrigger,
-} from "@/components/ui/sheet";
-
 const Navbar = () => {
-	const { itemCount } = useContext(ItemCountContext);
-	const [openSheet, setOpenSheet] = useState(false);
+	const { itemCount, open, setOpen } = useContext(ItemCountContext);
+	
 
 	const toggleSheet = () => {
-		setOpenSheet(!openSheet);
+		setOpen(!open);
 	};
 
 	useEffect(() => {
-		console.log("cart selected: ", openSheet);
+		console.log("cart selected: ", open);
 	});
 
 	return (

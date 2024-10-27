@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useContext, useState } from "react";
 import {
 	Dialog,
 	DialogBackdrop,
@@ -8,6 +8,7 @@ import {
 	DialogTitle,
 } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
+import ItemCountContext from "@/itemCountContext";
 
 const products = [
 	{
@@ -38,7 +39,7 @@ const products = [
 ];
 
 const CartSheet = () => {
-	const [open, setOpen] = useState(true);
+	const { open, setOpen } = useContext(ItemCountContext);;
 
 	return (
 		<Dialog open={open} onClose={setOpen} className="relative z-10">
