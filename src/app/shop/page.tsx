@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/card";
 import { useContext } from "react";
 import ItemCountContext from "@/itemCountContext";
+import CartSheet from "../utils/CartSheet";
 
 
 type Product = {
@@ -75,7 +76,7 @@ const ShopPage = () => {
 	return (
 		<div className="flex flex-col min-h-screen">
 			<Navbar />
-            {/* <CartSheet /> */}
+            <CartSheet />
 			<div className="grid grid-cols-4 gap-4 px-8 py-8">
 				{products.map((product, index) => {
 					return (
