@@ -1,7 +1,7 @@
-"use client"
+"use client";
 import React, { useEffect, useState } from "react";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
+import Navbar from "../utils/Navbar";
+import Footer from "../utils/Footer";
 import {
 	Card,
 	CardContent,
@@ -12,37 +12,38 @@ import {
 } from "@/components/ui/card";
 import { useContext } from "react";
 import ItemCountContext from "@/itemCountContext";
+import CartSheet from "../utils/CartSheet";
 
 type Product = {
 	name: string;
 	image: string;
 	price: number;
-    placedInCart: boolean
+	placedInCart: boolean;
 };
 
 const product1: Product = {
 	name: "New Balance 550 Shoes",
 	image: "/shoes1.jpg",
 	price: 109.99,
-    placedInCart: false
+	placedInCart: false,
 };
 const product2: Product = {
 	name: "New Balance 550 Shoes",
 	image: "/shoes1.jpg",
 	price: 109.99,
-    placedInCart: false
+	placedInCart: false,
 };
 const product3: Product = {
 	name: "New Balance 550 Shoes",
 	image: "/shoes1.jpg",
 	price: 109.99,
-    placedInCart: false
+	placedInCart: false,
 };
 const product4: Product = {
 	name: "New Balance 550 Shoes",
 	image: "/shoes1.jpg",
 	price: 109.99,
-    placedInCart: false
+	placedInCart: false,
 };
 
 const ShopPage = () => {
@@ -56,24 +57,25 @@ const ShopPage = () => {
 		product3,
 		product4,
 	];
-    const { itemCount, setItemCount } = useContext(ItemCountContext);
+	const { itemCount, setItemCount } = useContext(ItemCountContext);
 
-    const incrementItemCount = (product: Product) => {
-        console.log("adding to cart: ", product.name);
-        if (!product.placedInCart) {
-            // item not in cart yet, add it
-            setItemCount(itemCount + 1);
-            product.placedInCart = true;
-        }
-    };
+	const incrementItemCount = (product: Product) => {
+		console.log("adding to cart: ", product.name);
+		if (!product.placedInCart) {
+			// item not in cart yet, add it
+			setItemCount(itemCount + 1);
+			product.placedInCart = true;
+		}
+	};
 
-    useEffect(() => {
-        console.log("items added to cart: ", itemCount)
-    }, [itemCount]);
+	useEffect(() => {
+		console.log("items added to cart: ", itemCount);
+	}, [itemCount]);
 
 	return (
 		<div className="flex flex-col min-h-screen">
 			<Navbar />
+            <CartSheet />
 			<div className="grid grid-cols-4 gap-4 px-8 py-8">
 				{products.map((product, index) => {
 					return (
@@ -91,8 +93,10 @@ const ShopPage = () => {
 							</CardHeader>
 							<CardContent>${product.price}</CardContent>
 							<CardFooter className="">
-								<button className="rounded-md border-2 border-black px-3 py-1 bg-red-500 hover:bg-red-600 text-white font-bold"
-                                    onClick={() => incrementItemCount(product)}>
+								<button
+									className="rounded-md border-2 border-black px-3 py-1 bg-red-500 hover:bg-red-600 text-white font-bold"
+									onClick={() => incrementItemCount(product)}
+								>
 									Add to Cart
 								</button>
 							</CardFooter>

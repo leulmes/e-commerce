@@ -1,13 +1,24 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ShoppingCart } from "lucide-react";
 import { useContext } from "react";
 import ItemCountContext from "@/itemCountContext";
 
+
+
 const Navbar = () => {
 	const { itemCount } = useContext(ItemCountContext);
+	const [openSheet, setOpenSheet] = useState(false);
+
+	const toggleSheet = () => {
+		setOpenSheet(!openSheet);
+	};
+
+  useEffect(() => {
+    console.log("cart selected: ", openSheet);
+  })
 
 	return (
 		<div className="flex flex-row bg-black text-white sticky top-0 z-50">
@@ -26,13 +37,22 @@ const Navbar = () => {
 					</Link>
 					<h1>Book Now</h1>
 				</div>
+
+
+
 				<div className="flex flex-row gap-3">
-					<ShoppingCart className="absolute" size={25} />
+					<ShoppingCart
+						className="cursor-pointer absolute"
+						size={25}
+						onClick={() => toggleSheet()}
+					/>
 					<div className="flex items-center justify-center w-6 h-6 rounded-full bg-red-600 relative left-5 bottom-3">
 						<div className="text-sm">{itemCount}</div>
 					</div>
-					{/* <h4 className="font-bold font-sans">Cart</h4> */}
 				</div>
+
+
+
 			</div>
 		</div>
 	);
