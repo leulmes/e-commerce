@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Navbar from "../utils/Navbar";
 import Footer from "../utils/Footer";
 import {
@@ -14,77 +14,69 @@ import { useContext } from "react";
 import ItemCountContext from "@/itemCountContext";
 import CartSheet from "../utils/CartSheet";
 
-
 type Product = {
+	id: number;
 	name: string;
-	image: string;
+	href: string;
+	color: string;
 	price: number;
+	quantity: number;
+	imageSrc: string;
+	imageAlt: string;
 	placedInCart: boolean;
 };
 
-const product1: Product = {
-	name: "New Balance 550 Shoes",
-	image: "/shoes1.jpg",
-	price: 109.99,
-	placedInCart: false,
-};
-const product2: Product = {
-	name: "New Balance 550 Shoes",
-	image: "/shoes1.jpg",
-	price: 109.99,
-	placedInCart: false,
-};
-const product3: Product = {
-	name: "New Balance 550 Shoes",
-	image: "/shoes1.jpg",
-	price: 109.99,
-	placedInCart: false,
-};
-const product4: Product = {
-	name: "New Balance 550 Shoes",
-	image: "/shoes1.jpg",
-	price: 109.99,
-	placedInCart: false,
-};
+const products: Product[] = [{
+    	id: 1,
+    	name: "Throwback Hip Bag",
+    	href: "#",
+    	color: "Salmon",
+    	price: 90.00,
+    	quantity: 1,
+    	imageSrc:
+    		"https://tailwindui.com/plus/img/ecommerce-images/shopping-cart-page-04-product-01.jpg",
+    	imageAlt:
+    		"Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt.",
+    	placedInCart: false,
+    },
+    {
+    	id: 2,
+    	name: "Medium Stuff Satchel",
+    	href: "#",
+    	color: "Blue",
+    	price: 32.00,
+    	quantity: 1,
+    	imageSrc:
+    		"https://tailwindui.com/plus/img/ecommerce-images/shopping-cart-page-04-product-02.jpg",
+    	imageAlt:
+    		"Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch.",
+    	placedInCart: false,
+    }];
 
 const ShopPage = () => {
-	const products: Product[] = [
-		product1,
-		product2,
-		product3,
-		product4,
-		product1,
-		product2,
-		product3,
-		product4,
-	];
-	const { itemCount, setItemCount } = useContext(ItemCountContext);
-
-	const incrementItemCount = (product: Product) => {
-		console.log("adding to cart: ", product.name);
-		if (!product.placedInCart) {
-			// item not in cart yet, add it
-			setItemCount(itemCount + 1);
-			product.placedInCart = true;
-		}
-	};
+	const { itemCount, selectedProducts, setSelectedProducts, incrementItemCount } =
+		useContext(ItemCountContext);
 
 	useEffect(() => {
-		console.log("items added to cart: ", itemCount);
+		console.log("Item count: ", itemCount);
 	}, [itemCount]);
+
+    useEffect(() => {
+		console.log("Items added to cart: ", selectedProducts);
+	}, [selectedProducts]);
 
 	return (
 		<div className="flex flex-col min-h-screen">
 			<Navbar />
-            <CartSheet />
+			<CartSheet />
 			<div className="grid grid-cols-4 gap-4 px-8 py-8">
-				{products.map((product, index) => {
+				{products.map((product) => {
 					return (
-						<Card className="w-60 shadow-lg" key={index}>
+						<Card className="w-60 shadow-lg" key={product.id}>
 							<CardHeader>
 								<CardTitle>
 									<img
-										src={`${product.image}`}
+										src={`${product.imageSrc}`}
 										height={"100%"}
 										width={"100%"}
 										alt="image"
