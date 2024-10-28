@@ -25,9 +25,15 @@ const CartSheet = () => {
 	} = useContext(ItemCountContext);
 
 	useEffect(() => {
-		console.log("itemCount: ", itemCount);
-		console.log("selected products: ", selectedProducts);
-	});
+		setTotalPrice(
+            selectedProducts.reduce(
+                (accum, currVal) =>
+                    accum + (currVal.price * currVal.quantity),
+                0
+            )
+        );
+	}, [selectedProducts]);
+    
 	return (
 		<Dialog open={open} onClose={setOpen} className="relative z-10">
 			<DialogBackdrop
@@ -128,14 +134,7 @@ const CartSheet = () => {
 																						newQuantity -
 																						product.quantity
 																				); // - product.quantity to discount the current elt
-																				setTotalPrice(
-																					selectedProducts.reduce(
-																						(accum, currVal) =>
-																							accum +
-																							currVal.price * currVal.quantity,
-																						0
-																					)
-																				);
+																				
 																			}
 																		}}
 																	></Input>
