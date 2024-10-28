@@ -1,6 +1,6 @@
 "use client";
 
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import {
 	Dialog,
 	DialogBackdrop,
@@ -9,37 +9,16 @@ import {
 } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import ItemCountContext from "@/itemCountContext";
-
-// const products = [
-// 	{
-// 		id: 1,
-// 		name: "Throwback Hip Bag",
-// 		href: "#",
-// 		color: "Salmon",
-// 		price: "$90.00",
-// 		quantity: 1,
-// 		imageSrc:
-// 			"https://tailwindui.com/plus/img/ecommerce-images/shopping-cart-page-04-product-01.jpg",
-// 		imageAlt:
-// 			"Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt.",
-// 	},
-// 	{
-// 		id: 2,
-// 		name: "Medium Stuff Satchel",
-// 		href: "#",
-// 		color: "Blue",
-// 		price: "$32.00",
-// 		quantity: 1,
-// 		imageSrc:
-// 			"https://tailwindui.com/plus/img/ecommerce-images/shopping-cart-page-04-product-02.jpg",
-// 		imageAlt:
-// 			"Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch.",
-// 	}
-// ];
+import { Input } from "@/components/ui/input";
 
 const CartSheet = () => {
-	const { open, setOpen, itemCount, selectedProducts, setSelectedProducts, incrementItemCount } = useContext(ItemCountContext);
+	const { open, setOpen, selectedProducts, decrementItem, itemCount } =
+		useContext(ItemCountContext);
 
+	useEffect(() => {
+		console.log("itemCount: ", itemCount);
+		console.log("selected products: ", selectedProducts);
+	});
 	return (
 		<Dialog open={open} onClose={setOpen} className="relative z-10">
 			<DialogBackdrop
@@ -101,15 +80,24 @@ const CartSheet = () => {
 																	{product.color}
 																</p>
 															</div>
-															<div className="flex flex-1 items-end justify-between text-sm">
-																<p className="text-gray-500">
-																	Qty {product.quantity}
-																</p>
+															<div className="pt-5 flex flex-1 justify-between text-sm">
+																<div className="flex items-center gap-2">
+																	<label className="text-gray-500">Qty:</label>
+																	<Input
+																		type="number"
+																		value={product.quantity}
+																		placeholder="Enter quantity"
+																		min={1}
+																		max={10}
+																		className="w-14 rounded-md border border-gray-300 text-center text-gray-600 shadow-sm"
+																	></Input>
+																</div>
 
 																<div className="flex">
 																	<button
 																		type="button"
 																		className="font-medium text-indigo-600 hover:text-indigo-500"
+																		onClick={() => decrementItem(product)}
 																	>
 																		Remove
 																	</button>

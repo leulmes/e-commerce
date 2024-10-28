@@ -13,55 +13,49 @@ import {
 import { useContext } from "react";
 import ItemCountContext from "@/itemCountContext";
 import CartSheet from "../utils/CartSheet";
+import { Product } from "@/itemCountContext";
 
-type Product = {
-	id: number;
-	name: string;
-	href: string;
-	color: string;
-	price: number;
-	quantity: number;
-	imageSrc: string;
-	imageAlt: string;
-	placedInCart: boolean;
-};
-
-const products: Product[] = [{
-    	id: 1,
-    	name: "Throwback Hip Bag",
-    	href: "#",
-    	color: "Salmon",
-    	price: 90.00,
-    	quantity: 1,
-    	imageSrc:
-    		"https://tailwindui.com/plus/img/ecommerce-images/shopping-cart-page-04-product-01.jpg",
-    	imageAlt:
-    		"Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt.",
-    	placedInCart: false,
-    },
-    {
-    	id: 2,
-    	name: "Medium Stuff Satchel",
-    	href: "#",
-    	color: "Blue",
-    	price: 32.00,
-    	quantity: 1,
-    	imageSrc:
-    		"https://tailwindui.com/plus/img/ecommerce-images/shopping-cart-page-04-product-02.jpg",
-    	imageAlt:
-    		"Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch.",
-    	placedInCart: false,
-    }];
+const products: Product[] = [
+	{
+		id: 1,
+		name: "Throwback Hip Bag",
+		href: "#",
+		color: "Salmon",
+		price: 90.0,
+		quantity: 1,
+		imageSrc:
+			"https://tailwindui.com/plus/img/ecommerce-images/shopping-cart-page-04-product-01.jpg",
+		imageAlt:
+			"Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt.",
+		placedInCart: false,
+	},
+	{
+		id: 2,
+		name: "Medium Stuff Satchel",
+		href: "#",
+		color: "Blue",
+		price: 32.0,
+		quantity: 1,
+		imageSrc:
+			"https://tailwindui.com/plus/img/ecommerce-images/shopping-cart-page-04-product-02.jpg",
+		imageAlt:
+			"Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch.",
+		placedInCart: false,
+	},
+];
 
 const ShopPage = () => {
-	const { itemCount, selectedProducts, setSelectedProducts, incrementItemCount } =
-		useContext(ItemCountContext);
+	const {
+		itemCount,
+		selectedProducts,
+		incrementItem,
+	} = useContext(ItemCountContext);
 
 	useEffect(() => {
 		console.log("Item count: ", itemCount);
 	}, [itemCount]);
 
-    useEffect(() => {
+	useEffect(() => {
 		console.log("Items added to cart: ", selectedProducts);
 	}, [selectedProducts]);
 
@@ -88,7 +82,7 @@ const ShopPage = () => {
 							<CardFooter className="">
 								<button
 									className="rounded-md border-2 border-black px-3 py-1 bg-red-500 hover:bg-red-600 text-white font-bold"
-									onClick={() => incrementItemCount(product)}
+									onClick={() => incrementItem(product)}
 								>
 									Add to Cart
 								</button>

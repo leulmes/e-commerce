@@ -1,6 +1,6 @@
 import { createContext, useState, ReactNode } from "react";
 
-type Product = {
+export type Product = {
 	id: number;
 	name: string;
 	href: string;
@@ -19,7 +19,8 @@ const ItemCountContext = createContext({
 	setOpen: (open: boolean) => {},
 	selectedProducts: [] as Product[],
 	setSelectedProducts: (products: Product[]) => {},
-	incrementItemCount: (product: Product) => {},
+	incrementItem: (product: Product) => {},
+	decrementItem: (product: Product) => {},
 });
 
 export const ItemCountProvider = ({ children }: { children: ReactNode }) => {
@@ -27,14 +28,21 @@ export const ItemCountProvider = ({ children }: { children: ReactNode }) => {
 	const [open, setOpen] = useState(false);
 	const [selectedProducts, setSelectedProducts] = useState<Product[]>([]);
 
-	const incrementItemCount = (product: Product) => {
+	const incrementItem = (product: Product) => {
 		console.log("adding to cart: ", product.name);
 		if (!product.placedInCart) {
 			// item not in cart yet, add it
 			setItemCount(itemCount + 1);
-            setSelectedProducts(selectedProducts.concat(product))
+			setSelectedProducts(selectedProducts.concat(product));
 			product.placedInCart = true;
 		}
+	};
+	const decrementItem = (product: Product) => {
+		console.log("removing from cart: ", product.name);
+
+		setItemCount(itemCount - product.quantity);
+		setSelectedProducts(selectedProducts.filter((p) => p.id !== product.id));
+		product.placedInCart = false;
 	};
 
 	return (
@@ -46,7 +54,8 @@ export const ItemCountProvider = ({ children }: { children: ReactNode }) => {
 				setOpen,
 				selectedProducts,
 				setSelectedProducts,
-				incrementItemCount,
+				incrementItem,
+				decrementItem,
 			}}
 		>
 			{children}
