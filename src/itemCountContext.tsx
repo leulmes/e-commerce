@@ -21,13 +21,15 @@ const ItemCountContext = createContext({
 	setSelectedProducts: (products: Product[]) => {},
 	incrementItem: (product: Product) => {},
 	decrementItem: (product: Product) => {},
+    totalPrice: 0,
+    setTotalPrice: (totalPrice: number) => {}
 });
 
 export const ItemCountProvider = ({ children }: { children: ReactNode }) => {
 	const [itemCount, setItemCount] = useState(0);
 	const [open, setOpen] = useState(false);
 	const [selectedProducts, setSelectedProducts] = useState<Product[]>([]);
-
+    const [totalPrice, setTotalPrice] = useState(0);
     
 	const incrementItem = (product: Product) => {
 		console.log("adding to cart: ", product.name);
@@ -35,6 +37,7 @@ export const ItemCountProvider = ({ children }: { children: ReactNode }) => {
 			// item not in cart yet, add it
 			setItemCount(itemCount + 1);
 			setSelectedProducts(selectedProducts.concat(product));
+            setTotalPrice(totalPrice + product.price); // don't need to multiply by quantity since product will be added once from btn
 			product.placedInCart = true;
 		}
 	};
@@ -43,6 +46,8 @@ export const ItemCountProvider = ({ children }: { children: ReactNode }) => {
 
 		setItemCount(itemCount - product.quantity);
 		setSelectedProducts(selectedProducts.filter((p) => p.id !== product.id));
+        // updated total price
+        setTotalPrice(totalPrice - (product.price * product.quantity));
 		product.placedInCart = false;
 	};
 
@@ -57,6 +62,7 @@ export const ItemCountProvider = ({ children }: { children: ReactNode }) => {
 				setSelectedProducts,
 				incrementItem,
 				decrementItem,
+                totalPrice, setTotalPrice
 			}}
 		>
 			{children}

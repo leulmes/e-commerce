@@ -20,6 +20,8 @@ const CartSheet = () => {
 		decrementItem,
 		itemCount,
 		setItemCount,
+        totalPrice,
+        setTotalPrice
 	} = useContext(ItemCountContext);
 
 	useEffect(() => {
@@ -126,6 +128,14 @@ const CartSheet = () => {
 																						newQuantity -
 																						product.quantity
 																				); // - product.quantity to discount the current elt
+																				setTotalPrice(
+																					selectedProducts.reduce(
+																						(accum, currVal) =>
+																							accum +
+																							currVal.price * currVal.quantity,
+																						0
+																					)
+																				);
 																			}
 																		}}
 																	></Input>
@@ -152,7 +162,7 @@ const CartSheet = () => {
 								<div className="border-t border-gray-200 px-4 py-6 sm:px-6">
 									<div className="flex justify-between text-base font-medium text-gray-900">
 										<p>Subtotal</p>
-										<p>$262.00</p>
+										<p>${totalPrice}</p>
 									</div>
 									<p className="mt-0.5 text-sm text-gray-500">
 										Shipping and taxes calculated at checkout.
