@@ -12,8 +12,15 @@ import ItemCountContext from "@/itemCountContext";
 import { Input } from "@/components/ui/input";
 
 const CartSheet = () => {
-	const { open, setOpen, selectedProducts, decrementItem, itemCount } =
-		useContext(ItemCountContext);
+	const {
+		open,
+		setOpen,
+		selectedProducts,
+		setSelectedProducts,
+		decrementItem,
+		itemCount,
+		setItemCount,
+	} = useContext(ItemCountContext);
 
 	useEffect(() => {
 		console.log("itemCount: ", itemCount);
@@ -90,6 +97,37 @@ const CartSheet = () => {
 																		min={1}
 																		max={10}
 																		className="w-14 rounded-md border border-gray-300 text-center text-gray-600 shadow-sm"
+																		onChange={(e) => {
+																			const newQuantity = parseInt(
+																				e.target.value
+																			);
+																			if (
+																				!isNaN(newQuantity) &&
+																				newQuantity > 0 &&
+																				newQuantity <= 10
+																			) {
+																				const quantityUpdatedList =
+																					selectedProducts.map((p) => {
+																						if (p.id !== product.id) {
+																							return p;
+																						} else {
+																							return {
+																								...p,
+																								quantity: newQuantity,
+																							};
+																						}
+																					});
+
+																				setSelectedProducts(
+																					quantityUpdatedList
+																				);
+																				setItemCount(
+																					itemCount +
+																						newQuantity -
+																						product.quantity
+																				); // - product.quantity to discount the current elt
+																			}
+																		}}
 																	></Input>
 																</div>
 

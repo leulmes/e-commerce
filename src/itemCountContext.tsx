@@ -28,6 +28,7 @@ export const ItemCountProvider = ({ children }: { children: ReactNode }) => {
 	const [open, setOpen] = useState(false);
 	const [selectedProducts, setSelectedProducts] = useState<Product[]>([]);
 
+    
 	const incrementItem = (product: Product) => {
 		console.log("adding to cart: ", product.name);
 		if (!product.placedInCart) {
