@@ -2,9 +2,10 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ShoppingCart } from "lucide-react";
+import { ShoppingCart, User } from "lucide-react";
 import { useContext } from "react";
 import ItemCountContext from "@/itemCountContext";
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 
 const Navbar = () => {
 	const { itemCount, open, setOpen } = useContext(ItemCountContext);
@@ -25,7 +26,7 @@ const Navbar = () => {
 					<Image src="/hs-image.png" width="100" height="100" alt="logo" />
 				</Link>
 			</div>
-			<div className="flex flex-row gap-[1250px] items-center">
+			<div className="flex flex-row gap-[1330px] items-center">
 				<div className="cursor-pointer flex flex-row gap-4 items-center">
 					<h1>Services</h1>
 					<h1>Gallery</h1>
@@ -37,7 +38,7 @@ const Navbar = () => {
 				</div>
 
 				
-				<div className="flex flex-row gap-3">
+				<div className="flex flex-row gap-8">
 					<ShoppingCart
 						className="cursor-pointer absolute"
 						size={25}
@@ -46,6 +47,13 @@ const Navbar = () => {
 					<div className="flex items-center justify-center w-6 h-6 rounded-full bg-red-600 relative left-5 bottom-3">
 						<div className="text-sm">{itemCount}</div>
 					</div>
+					{/* <User className="cursor-pointer" /> */}
+					<SignedOut>
+						<SignInButton />
+					</SignedOut>
+					<SignedIn>
+						<UserButton />
+					</SignedIn>
 				</div>
 			</div>
 		</div>

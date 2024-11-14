@@ -1,4 +1,7 @@
 "use client";
+
+
+
 import Navbar from "./utils/Navbar";
 import Footer from "./utils/Footer";
 import EmblaCarousel from "./utils/EmblaCarousel";
