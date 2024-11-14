@@ -38,7 +38,7 @@ const Navbar = () => {
 				</div>
 
 				
-				<div className="flex flex-row gap-8">
+				<div className="flex flex-row gap-4">
 					<ShoppingCart
 						className="cursor-pointer absolute"
 						size={25}
@@ -47,7 +47,10 @@ const Navbar = () => {
 					<div className="flex items-center justify-center w-6 h-6 rounded-full bg-red-600 relative left-5 bottom-3">
 						<div className="text-sm">{itemCount}</div>
 					</div>
-					{/* <User className="cursor-pointer" /> */}
+					<Link href="/sign-in" className="cursor-pointer">
+						<User />
+					</Link>
+					
 					<SignedOut>
 						<SignInButton />
 					</SignedOut>
