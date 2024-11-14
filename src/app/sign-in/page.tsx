@@ -16,7 +16,7 @@ import Link from "next/link";
 const SignIn = () => {
 	return (
 		<div className="flex items-center justify-center h-screen ">
-			<Card className="w-[400px] h-[500px] shadow-xl">
+			<Card className="w-[400px] h-[500px] shadow-xl rounded-3xl">
 				<CardHeader className="flex items-center justify-center">
 					<CardTitle>Sign in to vintage.</CardTitle>
 					<CardDescription>Welcome! Please sign in to continue</CardDescription>

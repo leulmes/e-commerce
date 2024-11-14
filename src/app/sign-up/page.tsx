@@ -9,14 +9,18 @@ import {
 } from "@/components/ui/card";
 import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
+import EyeToggle from "@/components/ui/EyeToggle";
+import { Eye } from "lucide-react";
 
 const SignUp = () => {
 	return (
 		<div className="flex items-center justify-center h-screen ">
-			<Card className="w-[400px] h-[500px] shadow-xl">
+			<Card className="w-[400px] h-[500px] shadow-xl rounded-3xl">
 				<CardHeader className="flex items-center justify-center">
 					<CardTitle>Create your account</CardTitle>
-					<CardDescription>Welcome! Please fill in the details to get started.</CardDescription>
+					<CardDescription>
+						Welcome! Please fill in the details to get started.
+					</CardDescription>
 				</CardHeader>
 				<CardContent className="flex items-center justify-center">
 					<button className="flex gap-3 items-center justify-center border rounded-lg py-1 px-4 shadow-sm w-[70%] hover:bg-gray-100">
@@ -37,9 +41,17 @@ const SignUp = () => {
 						Email address
 					</label>
 					<input className="border rounded-lg py-1 px-4 shadow-sm"></input>
-					<button className="border rounded-lg py-2 px-4  shadow-sm hover:bg-gray-100 mt-8 text-sm">
-						Continue
-					</button>
+
+					<label className="text-sm text-gray-600 pb-1 pl-1 mt-5">
+						Password
+					</label>
+					<input
+						type="password"
+						id="pwd"
+						name="pwd"
+						className="border rounded-lg py-1 px-4 shadow-sm"
+					></input>
+					<EyeToggle />
 				</div>
 
 				<CardFooter className="flex flex-col items-center justify-center">
