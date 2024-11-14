@@ -39,11 +39,15 @@ const SignIn = () => {
 				<div className="flex flex-col pl-5 pr-5 pb-5">
 					<label className="text-sm text-gray-600 pb-1 pl-1">Email address</label>
 					<input className="border rounded-lg py-1 px-4 shadow-sm"></input>
+					<button className="border rounded-lg py-2 px-4  shadow-sm hover:bg-gray-100 mt-8 text-sm">Continue</button>
 				</div>
 				
-				<button className="border rounded-lg py-1 px-4 w-[70%] shadow-sm hover:bg-gray-100">Continue</button>
-				<CardFooter className="flex items-center justify-center">
-					<p>Don't have an account? Sign Up</p>
+				
+				<CardFooter className="flex flex-col items-center justify-center">
+					<label className="text-sm text-gray-600 ">
+						Don't have an account? 
+						<label className="font-bold cursor-pointer"> Sign up</label>
+					</label>
 				</CardFooter>
 			</Card>
 		</div>
