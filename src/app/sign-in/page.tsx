@@ -14,11 +14,11 @@ import {
 const SignIn = () => {
 	return (
 		<div className="flex items-center justify-center h-screen ">
-			<Card className="w-[500px] h-[500px] shadow-xl">
+			<Card className="w-[400px] h-[500px] shadow-xl">
 				<CardHeader className="flex items-center justify-center">
-					<CardTitle>Sign in to VintageScholar</CardTitle>
+					<CardTitle>Sign in to vintage.</CardTitle>
 					<CardDescription>
-						Your 1 stop shop for vintage college clothing!
+						Welcome! Please sign in to continue
 					</CardDescription>
 				</CardHeader>
 				<CardContent className="flex items-center justify-center">
@@ -30,9 +30,9 @@ const SignIn = () => {
 					</button>
 				</CardContent>
 				<div className="relative flex py-5 items-center justify-center ">
-					<div className="flex-grow border-t border-gray-400"></div>
+					<div className="w-32 border-t border-gray-200"></div>
 					<span className="flex-shrink mx-4 text-gray-400">or</span>
-					<div className="flex-grow border-t border-gray-400"></div>
+					<div className="w-32 border-t border-gray-200"></div>
 				</div>
 				<CardFooter className="flex items-center justify-center">
 					<p>Don't have an account? Sign Up</p>
