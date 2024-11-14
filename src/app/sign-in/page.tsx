@@ -2,6 +2,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { FcGoogle } from "react-icons/fc";
+import { Input } from "@/components/ui/input"
 
 import {
 	Card,
@@ -34,6 +35,13 @@ const SignIn = () => {
 					<span className="flex-shrink mx-4 text-gray-400">or</span>
 					<div className="w-32 border-t border-gray-200"></div>
 				</div>
+
+				<div className="flex flex-col pl-5 pr-5 pb-5">
+					<label className="text-sm text-gray-600 pb-1 pl-1">Email address</label>
+					<input className="border rounded-lg py-1 px-4 shadow-sm"></input>
+				</div>
+				
+				<button className="border rounded-lg py-1 px-4 w-[70%] shadow-sm hover:bg-gray-100">Continue</button>
 				<CardFooter className="flex items-center justify-center">
 					<p>Don't have an account? Sign Up</p>
 				</CardFooter>
