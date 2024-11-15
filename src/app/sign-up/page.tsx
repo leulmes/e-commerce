@@ -15,7 +15,7 @@ import { Eye } from "lucide-react";
 const SignUp = () => {
 	return (
 		<div className="flex items-center justify-center h-screen ">
-			<Card className="w-[400px] h-[500px] shadow-xl rounded-3xl">
+			<Card className="w-[400px] h-[500px] shadow-xl rounded-xl">
 				<CardHeader className="flex items-center justify-center">
 					<CardTitle>Create your account</CardTitle>
 					<CardDescription>
@@ -45,13 +45,27 @@ const SignUp = () => {
 					<label className="text-sm text-gray-600 pb-1 pl-1 mt-5">
 						Password
 					</label>
-					<input
+
+					<div className="relative">
+						<div className="absolute z-10 right-2 top-2">
+							<EyeToggle />
+						</div>
+						<input
+							type="password"
+							id="pwd"
+							name="pwd"
+							className="border rounded-lg py-1 px-4 shadow-sm z-0 w-full"
+						></input>
+					</div>
+					{/* <input
 						type="password"
 						id="pwd"
 						name="pwd"
-						className="border rounded-lg py-1 px-4 shadow-sm"
+						className="border rounded-lg py-1 px-4 shadow-sm z-0"
 					></input>
-					<EyeToggle />
+					<div className="absolute z-10">
+						<EyeToggle />
+					</div> */}
 				</div>
 
 				<CardFooter className="flex flex-col items-center justify-center">
