@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import {
 	Card,
 	CardContent,
@@ -13,6 +15,9 @@ import EyeToggle from "@/components/ui/EyeToggle";
 import { Eye } from "lucide-react";
 
 const SignUp = () => {
+	const [displayEye, setDisplayEye] = useState<boolean>(false);
+	const [inputType, setInputType] = useState<string>("text");
+
 	return (
 		<div className="flex items-center justify-center h-screen ">
 			<Card className="w-[400px] h-[500px] shadow-xl rounded-xl">
@@ -48,24 +53,20 @@ const SignUp = () => {
 
 					<div className="relative">
 						<div className="absolute z-10 right-2 top-2">
-							<EyeToggle />
+							<EyeToggle
+								displayEye={displayEye}
+								setDisplayEye={setDisplayEye}
+								inputType={inputType}
+								setInputType={setInputType}
+							/>
 						</div>
 						<input
-							type="password"
+							type={inputType}
 							id="pwd"
 							name="pwd"
 							className="border rounded-lg py-1 px-4 shadow-sm z-0 w-full"
 						></input>
 					</div>
-					{/* <input
-						type="password"
-						id="pwd"
-						name="pwd"
-						className="border rounded-lg py-1 px-4 shadow-sm z-0"
-					></input>
-					<div className="absolute z-10">
-						<EyeToggle />
-					</div> */}
 				</div>
 
 				<CardFooter className="flex flex-col items-center justify-center">
