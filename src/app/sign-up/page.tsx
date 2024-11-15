@@ -67,6 +67,9 @@ const SignUp = () => {
 							className="border rounded-lg py-1 px-4 shadow-sm z-0 w-full"
 						></input>
 					</div>
+                    <button className="border rounded-lg py-2 px-4  shadow-sm hover:bg-gray-100 mt-8 text-sm">
+						Continue
+					</button>
 				</div>
 
 				<CardFooter className="flex flex-col items-center justify-center">

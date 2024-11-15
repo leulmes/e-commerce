@@ -25,9 +25,9 @@ const EyeToggle = ({
 				className="flex items-center justify-center bg-slate-100 w-7 h-5 p-1 border rounded-md hover:bg-gray-200"
 			>
 				{displayEye ? (
-					<EyeOff className="w-4 h-4" />
-				) : (
 					<Eye className="w-4 h-4" />
+				) : (
+					<EyeOff className="w-4 h-4" />
 				)}
 			</button>
 		</div>
