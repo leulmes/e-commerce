@@ -7,7 +7,7 @@ const updateDate = (): number => {
 const Footer = () => {
   return (
     <div className='flex flex-row justify-center gap-4 bg-black items-center h-14 text-white mt-auto'>
-        &copy; {updateDate()} | Hiwot Studio
+        &copy; {updateDate()} | E-commerce
     </div>
   )
 }
