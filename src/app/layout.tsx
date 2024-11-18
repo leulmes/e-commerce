@@ -3,13 +3,8 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { ItemCountProvider } from "@/itemCountContext";
-import {
-	ClerkProvider,
-	SignInButton,
-	SignedIn,
-	SignedOut,
-	UserButton,
-} from "@clerk/nextjs";
+import { ClerkProvider, ClerkLoaded, ClerkLoading } from "@clerk/nextjs";
+import Navbar from "./utils/Navbar";
 
 const geistSans = localFont({
 	src: "./fonts/GeistVF.woff",
@@ -43,7 +38,16 @@ export default function RootLayout({
 				<body
 					className={`${geistSans.variable} ${geistMono.variable} antialiased`}
 				>
-					<ItemCountProvider>{children}</ItemCountProvider>
+					<ClerkLoading>
+						<div className="fixed top-0 left-0 w-screen h-screen bg-white flex justify-center items-center">
+							<p className="text-2xl font-bold text-gray-800">Loading...</p>
+						</div>
+					</ClerkLoading>
+
+					<ClerkLoaded>
+						<Navbar />
+						<ItemCountProvider>{children}</ItemCountProvider>
+					</ClerkLoaded>
 				</body>
 			</html>
 		</ClerkProvider>

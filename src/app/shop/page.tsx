@@ -61,7 +61,7 @@ const ShopPage = () => {
 
 	return (
 		<div className="flex flex-col min-h-screen">
-			<Navbar />
+			{/* <Navbar /> */}
 			<CartSheet />
 			<div className="grid grid-cols-4 gap-4 px-8 py-8">
 				{products.map((product) => {

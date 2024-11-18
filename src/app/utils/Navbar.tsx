@@ -9,7 +9,6 @@ import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 
 const Navbar = () => {
 	const { itemCount, open, setOpen } = useContext(ItemCountContext);
-	
 
 	const toggleSheet = () => {
 		setOpen(!open);
@@ -37,8 +36,7 @@ const Navbar = () => {
 					<h1>Book Now</h1>
 				</div>
 
-				
-				<div className="flex flex-row gap-4">
+				<div className="flex flex-row gap-7 items-center">
 					<ShoppingCart
 						className="cursor-pointer absolute"
 						size={25}
@@ -47,12 +45,15 @@ const Navbar = () => {
 					<div className="flex items-center justify-center w-6 h-6 rounded-full bg-red-600 relative left-5 bottom-3">
 						<div className="text-sm">{itemCount}</div>
 					</div>
-					<Link href="/sign-in" className="cursor-pointer">
+					{/* <Link href="/sign-in" className="cursor-pointer">
 						<User />
-					</Link>
-					
+					</Link> */}
+
 					<SignedOut>
-						<SignInButton />
+						{/* <SignInButton /> */}
+						<SignInButton>
+							<User className="cursor-pointer" size={25} />
+						</SignInButton>
 					</SignedOut>
 					<SignedIn>
 						<UserButton />
