@@ -17,6 +17,7 @@ let initialized = false;
             useUnifiedTopology: true
         });
         console.log('MongoDB connected');
+        initialized = true;
     } catch (error) {
         console.log('MongoDB connection error:', error);
     }

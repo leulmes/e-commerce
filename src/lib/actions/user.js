@@ -1,5 +1,5 @@
-import User from '../models/user.model.js'
-import connect from '../mongodb/mongoose.js'
+import User from '../models/user.model.js';
+import connect from '../mongodb/mongoose.js';
 
 export const createOrUpdateUser = async (
     id,
@@ -19,15 +19,15 @@ export const createOrUpdateUser = async (
                     firstName: first_name,
                     lastName: last_name,
                     avatar: image_url,
-                    email: email_addresses[0].email_addresses,
+                    email: email_addresses[0].email,
                     username: username
                 },
             },
-            {new: true, upsert: true}
+            {new: true, upsert: true} // upsert: true means if a user doesn't exist, create the user
         );
         return user;
     } catch (error) {
-        console.log(error);
+        console.log('Error creating or updating user: ', error);
     }
 };
 
@@ -37,7 +37,7 @@ export const deleteUser = async (id) => {
 
         await User.findOneAndDelete({ clerkId: id });
     } catch (error) {
-        console.log('Error deleting user:', error);
+        console.log('Error deleting user: ', error);
     }
 }
  
