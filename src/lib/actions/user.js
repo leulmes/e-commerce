@@ -11,7 +11,7 @@ export const createOrUpdateUser = async (
 ) => {
     try {
         await connect();
-
+        console.log('email: ', email_addresses[0].email);
         const user = await User.findOneAndUpdate(
             {clerkId: id},
             {
@@ -20,7 +20,6 @@ export const createOrUpdateUser = async (
                     lastName: last_name,
                     avatar: image_url,
                     email: email_addresses[0].email,
-                    username: username
                 },
             },
             {new: true, upsert: true} // upsert: true means if a user doesn't exist, create the user
