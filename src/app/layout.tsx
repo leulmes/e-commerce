@@ -45,8 +45,10 @@ export default function RootLayout({
 					</ClerkLoading>
 
 					<ClerkLoaded>
-						<Navbar />
-						<ItemCountProvider>{children}</ItemCountProvider>
+						<ItemCountProvider>
+							<Navbar />
+							{children}
+						</ItemCountProvider>
 					</ClerkLoaded>
 				</body>
 			</html>
