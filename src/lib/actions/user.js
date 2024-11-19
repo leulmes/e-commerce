@@ -18,7 +18,7 @@ export const createOrUpdateUser = async (
                     firstName: first_name,
                     lastName: last_name,
                     avatar: image_url,
-                    email: email_addresses[0].email,
+                    email: email_addresses[0].email_address,
                 },
             },
             {new: true, upsert: true} // upsert: true means if a user doesn't exist, create the user
