@@ -12,7 +12,7 @@ let initialized = false;
 
     try {
         await mongoose.connect(process.env.MONGODB_URI, {
-            dbName: "next auth app",
+            dbName: "e-commerce",
             useNewUrlParser: true,
             useUnifiedTopology: true
         });
