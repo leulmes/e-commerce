@@ -55,8 +55,9 @@ export async function POST(req: Request) {
   console.log('Webhook payload:', body)
 
   if (eventType === 'user.created' || eventType === 'user.updated') {
-      const { id, first_name, last_name, image_url, email_addresses, username } = evt?.data;
-
+      const { id, first_name, last_name, image_url, email_addresses } = evt?.data;
+      console.log("email addy in route.ts: ", email_addresses);
+      console.log("1st email addy in route.ts: ", email_addresses[0]);
       try {
         await createOrUpdateUser(
             id,
@@ -64,7 +65,6 @@ export async function POST(req: Request) {
             last_name,
             image_url,
             email_addresses,
-            username
         );
         return new Response('User is created or updated', {
             status: 200,
