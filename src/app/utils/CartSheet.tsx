@@ -10,6 +10,7 @@ import {
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import ItemCountContext from "@/itemCountContext";
 import { Input } from "@/components/ui/input";
+import { loadStripe } from "@stripe/stripe-js";
 
 const CartSheet = () => {
 	const {
@@ -20,20 +21,59 @@ const CartSheet = () => {
 		decrementItem,
 		itemCount,
 		setItemCount,
-        totalPrice,
-        setTotalPrice
+		totalPrice,
+		setTotalPrice,
 	} = useContext(ItemCountContext);
 
 	useEffect(() => {
 		setTotalPrice(
-            selectedProducts.reduce(
-                (accum, currVal) =>
-                    accum + (currVal.price * currVal.quantity),
-                0
-            )
-        );
+			selectedProducts.reduce(
+				(accum, currVal) => accum + currVal.price * currVal.quantity,
+				0
+			)
+		);
 	}, [selectedProducts]);
-    
+
+	const stripePromise = loadStripe(
+		process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
+	);
+	
+	const handleCheckout = async () => {
+		try {
+			const stripe = await stripePromise;
+			if (!stripe) throw new Error("Failed to load Stripe");
+
+			const response = await fetch("/api/checkout-sessions", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({
+					cartItems: selectedProducts,
+					returnUrl: window.location.origin,
+				}),
+			});
+
+			if (!response.ok) {
+				const errorData = await response.json();
+				throw new Error(errorData.error || "Network response was not ok");
+			}
+
+			const session = await response.json();
+			console.log("response: ", response);
+			console.log("sessionId: ", session.sessionId);
+			const { error } = await stripe.redirectToCheckout({
+				sessionId: session.sessionId,
+			});
+
+			if (error) {
+				throw error;
+			}
+		} catch (error) {
+			console.error("Error during checkout:", error);
+			// You might want to add some UI feedback here
+		}
+	};
 	return (
 		<Dialog open={open} onClose={setOpen} className="relative z-10">
 			<DialogBackdrop
@@ -134,7 +174,6 @@ const CartSheet = () => {
 																						newQuantity -
 																						product.quantity
 																				); // - product.quantity to discount the current elt
-																				
 																			}
 																		}}
 																	></Input>
@@ -168,8 +207,8 @@ const CartSheet = () => {
 									</p>
 									<div className="mt-6">
 										<a
-											href="#"
-											className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
+											className="cursor-pointer flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
+											onClick={handleCheckout}
 										>
 											Checkout
 										</a>

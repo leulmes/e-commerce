@@ -45,11 +45,8 @@ const products: Product[] = [
 ];
 
 const ShopPage = () => {
-	const {
-		itemCount,
-		selectedProducts,
-		incrementItem,
-	} = useContext(ItemCountContext);
+	const { itemCount, selectedProducts, incrementItem } =
+		useContext(ItemCountContext);
 
 	useEffect(() => {
 		console.log("Item count: ", itemCount);
@@ -61,7 +58,6 @@ const ShopPage = () => {
 
 	return (
 		<div className="flex flex-col min-h-screen">
-			{/* <Navbar /> */}
 			<CartSheet />
 			<div className="grid grid-cols-4 gap-4 px-8 py-8">
 				{products.map((product) => {
