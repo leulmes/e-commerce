@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ShoppingCart, User } from "lucide-react";
+import { ShoppingCart, User, ChevronRight } from "lucide-react";
 import { useContext } from "react";
 import ItemCountContext from "@/itemCountContext";
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
@@ -24,8 +24,8 @@ const Navbar = () => {
 	}, [isOpen]);
 
 	return (
-		<div className="flex flex-col bg-white ">
-			<div className="flex flex-row items-center h-20 sticky overscroll-x-contain">
+		<div className="flex flex-col bg-white">
+			<div className="flex flex-row items-center h-12 sticky overscroll-x-contain">
 				<button
 					className="group cursor-pointer ml-4"
 					onClick={() => toggleBurgerMenu()}
@@ -46,6 +46,52 @@ const Navbar = () => {
 				<User className="size-4 mr-1" />
 				<ShoppingCart className=" size-4 mr-4" />
 			</div>
+			<div className="relative">
+				<hr></hr>
+				<div className="bg-slate-700 absolute w-screen h-screen scroll-smooth">
+					<div className="mt-7 ml-4 text-3xl">
+						<ul className="mb-7">
+							<li className="mb-4">
+								<div className="flex flex-row items-center">
+									<h1>T-Shirts</h1>
+									<ChevronRight className="size-7 ml-auto mr-3" />
+								</div>
+							</li>
+
+							<li className="mb-4">
+								<div className="flex flex-row items-center">
+									<h1>Sweaters & Hoodies</h1>
+									<ChevronRight className="size-7 ml-auto mr-3" />
+								</div>
+							</li>
+
+							<li className="mb-4">
+								<div className="flex flex-row items-center">
+									<h1>Jackets & Outerwear</h1>
+									<ChevronRight className="size-7 ml-auto mr-3" />
+								</div>
+							</li>
+							<li className="mb-4">
+								<div className="flex flex-row items-center">
+									<h1>Accessories</h1>
+									<ChevronRight className="size-7 ml-auto mr-3" />
+								</div>
+							</li>
+						</ul>
+					</div>
+
+					<hr></hr>
+					<div className="mt-4 ml-4">
+						<ul>
+							<li>Sustainability</li>
+							<li>Wishlist</li>
+							<li>Can we help you?</li>
+							<li>+ 1.866.BLOOM</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
 			<input
 				type="text"
 				placeholder="Search for Second Hand Clothing"
