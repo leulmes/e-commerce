@@ -8,6 +8,7 @@ import ItemCountContext from "@/itemCountContext";
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 import { AnimatePresence, motion } from "motion/react";
 const ShoppingBag02Icon = (props: React.SVGProps<SVGSVGElement>) => (
+	// hey
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
 		viewBox="0 0 24 24"
