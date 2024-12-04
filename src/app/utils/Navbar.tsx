@@ -39,16 +39,25 @@ const ShoppingBag02Icon = (props: React.SVGProps<SVGSVGElement>) => (
 
 const Navbar = () => {
 	const { itemCount, open, setOpen } = useContext(ItemCountContext);
-	const [isOpen, setIsOpen] = useState(false);
+	const [burgerMenuIsOpen, setBurgerMenuOpen] = useState(false);
 	const burgerLine = `bg-black w-5 h-[0.5px] my-0.5 rounded transition ease transform duration-300`;
 	const toggleSheet = () => {
 		setOpen(!open);
 	};
 
 	const toggleBurgerMenu = () => {
-		setIsOpen(!isOpen);
+		setBurgerMenuOpen(!burgerMenuIsOpen);
 	};
 
+	const navLinks = [
+		{ title: "T-Shirts", href: "" },
+		{ title: "Sweaters & Hoodies", href: "" },
+		{ title: "Jackets & Outerwear", href: "" },
+		{ title: "Accessories", href: "" },
+		{ title: "Bottoms", href: "" },
+		{ title: "Kids", href: "" },
+		{ title: "Shop", href: "/shop" },
+	];
 	const menuVars = {
 		initial: {
 			scaleY: 0,
@@ -68,9 +77,44 @@ const Navbar = () => {
 			},
 		},
 	};
+
+	const ulVariant = {
+		opened: {
+			transition: {
+				delayChildren: 0.5,
+				staggerChildren: 0.18,
+			},
+		},
+		closed: {
+			transition: {
+				staggerChildren: 0.06,
+				staggerDirection: -1,
+			},
+		},
+	};
+
+	const liVariant = {
+		opened: {
+			opacity: 1,
+			y: "0%",
+			transition: {
+				duration: 0.65,
+				ease: "easeOut",
+			},
+		},
+		closed: {
+			opacity: 0,
+			y: "100%",
+			transition: {
+				duration: 0.25,
+				ease: "easeInOut",
+			},
+		},
+	};
+
 	useEffect(() => {
-		console.log("burgerState: ", isOpen);
-	}, [isOpen]);
+		console.log("burgerState: ", burgerMenuIsOpen);
+	}, [burgerMenuIsOpen]);
 
 	return (
 		<div className="flex flex-col bg-white">
@@ -82,12 +126,12 @@ const Navbar = () => {
 					<div className="grid justify-items-center">
 						<div
 							className={`${burgerLine}
-							${isOpen ? "rotate-45 translate-y-[4.2px]" : ""}`}
+							${burgerMenuIsOpen ? "rotate-45 translate-y-[4.2px]" : ""}`}
 						></div>
-						<div className={`${burgerLine} ${isOpen ? "opacity-0" : ""}`}></div>
+						<div className={`${burgerLine} ${burgerMenuIsOpen ? "opacity-0" : ""}`}></div>
 						<div
 							className={`${burgerLine}
-							${isOpen ? "-rotate-45 -translate-y-[4.2px]" : ""}`}
+							${burgerMenuIsOpen ? "-rotate-45 -translate-y-[4.2px]" : ""}`}
 						></div>
 					</div>
 				</button>
@@ -115,7 +159,7 @@ const Navbar = () => {
 				<hr></hr>
 			</div>
 			<AnimatePresence>
-				{isOpen ? (
+				{burgerMenuIsOpen ? (
 					<div className="relative">
 						<motion.div
 							variants={menuVars}
@@ -124,57 +168,30 @@ const Navbar = () => {
 							exit="exit"
 							className="bg-white absolute w-screen h-screen scroll-smooth origin-top"
 						>
-							<div className="mt-7 ml-4 text-3xl">
-								<ul className="mb-7 cursor-pointer">
-									<li className="mb-4">
-										<div className="flex flex-row items-center">
-											<h1>T-Shirts</h1>
-											<ChevronRight className="size-7 ml-auto mr-3" />
-										</div>
-									</li>
-
-									<li className="mb-4">
-										<div className="flex flex-row items-center">
-											<h1>Sweaters & Hoodies</h1>
-											<ChevronRight className="size-7 ml-auto mr-3" />
-										</div>
-									</li>
-
-									<li className="mb-4">
-										<div className="flex flex-row items-center">
-											<h1>Jackets & Outerwear</h1>
-											<ChevronRight className="size-7 ml-auto mr-3" />
-										</div>
-									</li>
-									<li className="mb-4">
-										<div className="flex flex-row items-center">
-											<h1>Accessories</h1>
-											<ChevronRight className="size-7 ml-auto mr-3" />
-										</div>
-									</li>
-									<li className="mb-4">
-										<div className="flex flex-row items-center">
-											<h1>Bottoms</h1>
-											<ChevronRight className="size-7 ml-auto mr-3" />
-										</div>
-									</li>
-									<li className="mb-4">
-										<div className="flex flex-row items-center">
-											<h1>Kids</h1>
-											<ChevronRight className="size-7 ml-auto mr-3" />
-										</div>
-									</li>
-									<li className="mb-4">
-										<Link
-											href="/shop"
-											className="flex flex-row items-center"
-											onClick={() => toggleBurgerMenu()}
-										>
-											<h1>Shop</h1>
-											<ChevronRight className="size-7 ml-auto mr-3" />
-										</Link>
-									</li>
-								</ul>
+							<div className="mt-5 ml-4 text-3xl">
+								<motion.ul
+									variants={ulVariant}
+									className="mb-7 cursor-pointer"
+									initial="closed"
+									animate={burgerMenuIsOpen ? "opened" : "closed"}
+								>
+									{navLinks.map((link, index) => {
+										return (
+											<motion.li
+												variants={liVariant}
+												key={index}
+												className="mb-4"
+											>
+												<div className="flex flex-row items-center">
+													<Link href={link.href} onClick={() => toggleBurgerMenu()}>
+														<h1>{link.title}</h1>
+													</Link>
+													<ChevronRight className="size-7 ml-auto mr-3" />
+												</div>
+											</motion.li>
+										);
+									})}
+								</motion.ul>
 							</div>
 
 							<hr></hr>
