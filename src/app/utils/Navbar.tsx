@@ -55,7 +55,7 @@ const Navbar = () => {
 		{ title: "Jackets & Outerwear", href: "" },
 		{ title: "Accessories", href: "" },
 		{ title: "Bottoms", href: "" },
-		{ title: "Kids", href: "" },
+		// { title: "Kids", href: "" },
 		{ title: "Shop", href: "/shop" },
 	];
 	const menuVars = {
@@ -98,7 +98,7 @@ const Navbar = () => {
 			opacity: 1,
 			y: "0%",
 			transition: {
-				duration: 0.65,
+				duration: 0.85,
 				ease: "easeOut",
 			},
 		},
@@ -106,7 +106,7 @@ const Navbar = () => {
 			opacity: 0,
 			y: "100%",
 			transition: {
-				duration: 0.25,
+				duration: 0.65,
 				ease: "easeInOut",
 			},
 		},
@@ -117,7 +117,7 @@ const Navbar = () => {
 	}, [burgerMenuIsOpen]);
 
 	return (
-		<div className="flex flex-col bg-white">
+		<div className="flex flex-col bg-white sticky top-0 z-50">
 			<div className="flex flex-row items-center h-14 sticky overscroll-x-contain">
 				<button
 					className="group cursor-pointer ml-6"
@@ -128,7 +128,9 @@ const Navbar = () => {
 							className={`${burgerLine}
 							${burgerMenuIsOpen ? "rotate-45 translate-y-[4.2px]" : ""}`}
 						></div>
-						<div className={`${burgerLine} ${burgerMenuIsOpen ? "opacity-0" : ""}`}></div>
+						<div
+							className={`${burgerLine} ${burgerMenuIsOpen ? "opacity-0" : ""}`}
+						></div>
 						<div
 							className={`${burgerLine}
 							${burgerMenuIsOpen ? "-rotate-45 -translate-y-[4.2px]" : ""}`}
@@ -145,7 +147,6 @@ const Navbar = () => {
 					<UserButton />
 				</SignedIn>
 
-				{/* <ShoppingCart className=" size-4 mr-4" /> */}
 				<div className="flex flex-row gap-3 cursor-pointer mr-8">
 					<ShoppingBag02Icon
 						className="absolute size-5"
@@ -159,14 +160,14 @@ const Navbar = () => {
 				<hr></hr>
 			</div>
 			<AnimatePresence>
-				{burgerMenuIsOpen ? (
+				{burgerMenuIsOpen && (
 					<div className="relative">
 						<motion.div
 							variants={menuVars}
 							initial="initial"
 							animate="animate"
-							exit="exit"
 							className="bg-white absolute w-screen h-screen scroll-smooth origin-top"
+							exit="closed"
 						>
 							<div className="mt-5 ml-4 text-3xl">
 								<motion.ul
@@ -174,6 +175,7 @@ const Navbar = () => {
 									className="mb-7 cursor-pointer"
 									initial="closed"
 									animate={burgerMenuIsOpen ? "opened" : "closed"}
+									exit="closed"
 								>
 									{navLinks.map((link, index) => {
 										return (
@@ -181,11 +183,15 @@ const Navbar = () => {
 												variants={liVariant}
 												key={index}
 												className="mb-4"
+												
 											>
 												<div className="flex flex-row items-center">
-													<Link href={link.href} onClick={() => toggleBurgerMenu()}>
-														<h1>{link.title}</h1>
-													</Link>
+													<motion.div whileTap={{ scale: 0.95 }}>
+														<Link href={link.href}>
+															<h1>{link.title}</h1>
+														</Link>
+													</motion.div>
+
 													<ChevronRight className="size-7 ml-auto mr-3" />
 												</div>
 											</motion.li>
@@ -205,8 +211,6 @@ const Navbar = () => {
 							</div>
 						</motion.div>
 					</div>
-				) : (
-					""
 				)}
 			</AnimatePresence>
 

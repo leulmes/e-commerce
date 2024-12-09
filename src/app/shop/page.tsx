@@ -42,6 +42,149 @@ const products: Product[] = [
 			"Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch.",
 		placedInCart: false,
 	},
+	{
+		id: 2,
+		name: "Medium Stuff Satchel",
+		href: "#",
+		color: "Blue",
+		price: 32.0,
+		quantity: 1,
+		imageSrc:
+			"https://tailwindui.com/plus/img/ecommerce-images/shopping-cart-page-04-product-02.jpg",
+		imageAlt:
+			"Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch.",
+		placedInCart: false,
+	},
+	{
+		id: 2,
+		name: "Medium Stuff Satchel",
+		href: "#",
+		color: "Blue",
+		price: 32.0,
+		quantity: 1,
+		imageSrc:
+			"https://tailwindui.com/plus/img/ecommerce-images/shopping-cart-page-04-product-02.jpg",
+		imageAlt:
+			"Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch.",
+		placedInCart: false,
+	},
+	{
+		id: 2,
+		name: "Medium Stuff Satchel",
+		href: "#",
+		color: "Blue",
+		price: 32.0,
+		quantity: 1,
+		imageSrc:
+			"https://tailwindui.com/plus/img/ecommerce-images/shopping-cart-page-04-product-02.jpg",
+		imageAlt:
+			"Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch.",
+		placedInCart: false,
+	},
+	{
+		id: 2,
+		name: "Medium Stuff Satchel",
+		href: "#",
+		color: "Blue",
+		price: 32.0,
+		quantity: 1,
+		imageSrc:
+			"https://tailwindui.com/plus/img/ecommerce-images/shopping-cart-page-04-product-02.jpg",
+		imageAlt:
+			"Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch.",
+		placedInCart: false,
+	},
+	{
+		id: 2,
+		name: "Medium Stuff Satchel",
+		href: "#",
+		color: "Blue",
+		price: 32.0,
+		quantity: 1,
+		imageSrc:
+			"https://tailwindui.com/plus/img/ecommerce-images/shopping-cart-page-04-product-02.jpg",
+		imageAlt:
+			"Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch.",
+		placedInCart: false,
+	},
+	{
+		id: 2,
+		name: "Medium Stuff Satchel",
+		href: "#",
+		color: "Blue",
+		price: 32.0,
+		quantity: 1,
+		imageSrc:
+			"https://tailwindui.com/plus/img/ecommerce-images/shopping-cart-page-04-product-02.jpg",
+		imageAlt:
+			"Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch.",
+		placedInCart: false,
+	},
+	{
+		id: 2,
+		name: "Medium Stuff Satchel",
+		href: "#",
+		color: "Blue",
+		price: 32.0,
+		quantity: 1,
+		imageSrc:
+			"https://tailwindui.com/plus/img/ecommerce-images/shopping-cart-page-04-product-02.jpg",
+		imageAlt:
+			"Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch.",
+		placedInCart: false,
+	},
+	{
+		id: 2,
+		name: "Medium Stuff Satchel",
+		href: "#",
+		color: "Blue",
+		price: 32.0,
+		quantity: 1,
+		imageSrc:
+			"https://tailwindui.com/plus/img/ecommerce-images/shopping-cart-page-04-product-02.jpg",
+		imageAlt:
+			"Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch.",
+		placedInCart: false,
+	},
+	{
+		id: 2,
+		name: "Medium Stuff Satchel",
+		href: "#",
+		color: "Blue",
+		price: 32.0,
+		quantity: 1,
+		imageSrc:
+			"https://tailwindui.com/plus/img/ecommerce-images/shopping-cart-page-04-product-02.jpg",
+		imageAlt:
+			"Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch.",
+		placedInCart: false,
+	},
+	{
+		id: 2,
+		name: "Medium Stuff Satchel",
+		href: "#",
+		color: "Blue",
+		price: 32.0,
+		quantity: 1,
+		imageSrc:
+			"https://tailwindui.com/plus/img/ecommerce-images/shopping-cart-page-04-product-02.jpg",
+		imageAlt:
+			"Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch.",
+		placedInCart: false,
+	},
+	{
+		id: 2,
+		name: "Medium Stuff Satchel",
+		href: "#",
+		color: "Blue",
+		price: 32.0,
+		quantity: 1,
+		imageSrc:
+			"https://tailwindui.com/plus/img/ecommerce-images/shopping-cart-page-04-product-02.jpg",
+		imageAlt:
+			"Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch.",
+		placedInCart: false,
+	}
 ];
 
 const ShopPage = () => {
@@ -59,7 +202,7 @@ const ShopPage = () => {
 	return (
 		<div className="flex flex-col min-h-screen">
 			<CartSheet />
-			<div className="grid grid-cols-4 gap-4 px-8 py-8">
+			<div className="items-center justify-center flex flex-wrap gap-4 mt-4 mb-4">
 				{products.map((product) => {
 					return (
 						<Card className="w-60 shadow-lg" key={product.id}>
